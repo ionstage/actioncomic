@@ -3,6 +3,10 @@
 
   var dom = {};
 
+  dom.body = function() {
+    return document.body;
+  };
+
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = dom;
   } else {
