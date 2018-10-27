@@ -2,12 +2,9 @@
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   background-color: #fafafa;
-  height: 100%;
   margin: 0;
-  position: absolute;
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-  width: 100%;
 }
