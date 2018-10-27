@@ -8,3 +8,9 @@
   -webkit-user-select: none;
   user-select: none;
 }
+
+.content {
+  pointer-events: none;
+  position: fixed;
+  width: 100%;
+}
