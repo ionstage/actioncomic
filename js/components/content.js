@@ -3,7 +3,9 @@
 
   var jCore = require('jcore');
 
-  var Content = jCore.Component.inherits();
+  var Content = jCore.Component.inherits(function() {
+    this.pages = [];
+  });
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = Content;
