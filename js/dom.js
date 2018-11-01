@@ -7,6 +7,12 @@
     return document.body;
   };
 
+  dom.render = function(s) {
+    var el = document.createRange().createContextualFragment(s).firstChild;
+    el.parentNode.removeChild(el);
+    return el;
+  };
+
   dom.css = function(el, props) {
     var style = el.style;
     Object.keys(props).forEach(function(key) {
