@@ -8,6 +8,10 @@
     this.scrollHeight = this.prop(624);
   });
 
+  Page.prototype.height = function() {
+    return this.element().offsetHeight;
+  };
+
   Page.prototype.render = function() {
     return dom.render(Page.HTML_TEXT);
   };
