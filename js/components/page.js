@@ -4,7 +4,9 @@
   var jCore = require('jcore');
   var dom = app.dom || require('../dom.js');
 
-  var Page = jCore.Component.inherits();
+  var Page = jCore.Component.inherits(function() {
+    this.scrollHeight = this.prop(624);
+  });
 
   Page.prototype.render = function() {
     return dom.render(Page.HTML_TEXT);
