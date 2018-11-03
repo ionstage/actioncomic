@@ -20,6 +20,10 @@
     });
   };
 
+  dom.offsetHeight = function(el) {
+    return el.offsetHeight;
+  };
+
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = dom;
   } else {

@@ -9,7 +9,7 @@
   });
 
   Page.prototype.height = function() {
-    return this.element().offsetHeight;
+    return dom.offsetHeight(this.element());
   };
 
   Page.prototype.render = function() {
