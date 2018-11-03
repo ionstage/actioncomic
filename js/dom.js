@@ -24,6 +24,10 @@
     return el.offsetHeight;
   };
 
+  dom.scrollY = function() {
+    return window.pageYOffset;
+  };
+
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = dom;
   } else {
