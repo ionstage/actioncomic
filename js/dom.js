@@ -24,6 +24,10 @@
     return el.offsetHeight;
   };
 
+  dom.scrollHeight = function(el) {
+    return el.scrollHeight;
+  };
+
   dom.scrollY = function() {
     return window.pageYOffset;
   };
