@@ -38,6 +38,22 @@
     return window.pageYOffset;
   };
 
+  dom.on = function(el, type, listener, useCapture) {
+    el.addEventListener(type, listener, !!useCapture);
+  };
+
+  dom.off = function(el, type, listener, useCapture) {
+    el.removeEventListener(type, listener, !!useCapture);
+  };
+
+  dom.once = function(el, type, listener, useCapture) {
+    var wrapper = function() {
+      dom.off(el, type, wrapper, useCapture);
+      listener.apply(null, arguments);
+    };
+    dom.on(el, type, wrapper, useCapture);
+  };
+
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = dom;
   } else {
