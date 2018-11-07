@@ -12,6 +12,15 @@
     return dom.offsetHeight(this.element());
   };
 
+  Page.prototype.load = function(url) {
+    return new Promise(function(resolve) {
+      dom.once(this.element(), 'load', function() {
+        resolve();
+      });
+      dom.attr(this.element(), { src: url });
+    }.bind(this));
+  };
+
   Page.prototype.render = function() {
     return dom.render(Page.HTML_TEXT);
   };
