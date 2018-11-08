@@ -26,6 +26,13 @@
     });
   };
 
+  dom.transform = function(el, value) {
+    dom.css(el, {
+      transform: value,
+      webkitTransform: value,
+    });
+  };
+
   dom.offsetHeight = function(el) {
     return el.offsetHeight;
   };
