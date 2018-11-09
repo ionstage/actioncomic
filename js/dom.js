@@ -33,6 +33,10 @@
     });
   };
 
+  dom.translateY = function(el, y) {
+    dom.transform(el, 'translateY(' + y + 'px)');
+  };
+
   dom.offsetHeight = function(el) {
     return el.offsetHeight;
   };
