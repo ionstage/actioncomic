@@ -49,6 +49,10 @@
     return window.pageYOffset;
   };
 
+  dom.contentWindow = function(iframe) {
+    return iframe.contentWindow;
+  };
+
   dom.on = function(el, type, listener, useCapture) {
     el.addEventListener(type, listener, !!useCapture);
   };
