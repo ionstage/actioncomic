@@ -6,6 +6,7 @@
 
   var Page = jCore.Component.inherits(function() {
     this.scrollHeight = this.prop(624);
+    this.module = null;
   });
 
   Page.prototype.height = function() {
@@ -15,9 +16,11 @@
   Page.prototype.load = function(url) {
     return new Promise(function(resolve) {
       dom.once(this.element(), 'load', function() {
-        resolve();
-      });
+        resolve(dom.contentWindow(this.element()).page.exports);
+      }.bind(this));
       dom.attr(this.element(), { src: url });
+    }.bind(this)).then(function(module) {
+      this.module = module;
     }.bind(this));
   };
 
