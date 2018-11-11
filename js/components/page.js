@@ -6,6 +6,7 @@
 
   var Page = jCore.Component.inherits(function() {
     this.scrollHeight = this.prop(624);
+    this.visible = this.prop(false);
     this.module = null;
   });
 
@@ -28,7 +29,13 @@
     return dom.render(Page.HTML_TEXT);
   };
 
-  Page.HTML_TEXT = '<iframe class="page"></iframe>';
+  Page.prototype.onredraw = function() {
+    this.redrawBy('visible', function(visible) {
+      dom.toggleClass(this.element(), 'hide', !visible);
+    });
+  };
+
+  Page.HTML_TEXT = '<iframe class="page hide"></iframe>';
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = Page;
