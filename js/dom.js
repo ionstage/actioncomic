@@ -26,6 +26,14 @@
     });
   };
 
+  dom.toggleClass = function(el, className, force) {
+    if (force) {
+      el.classList.add(className);
+    } else {
+      el.classList.remove(className);
+    }
+  };
+
   dom.transform = function(el, value) {
     dom.css(el, {
       transform: value,
