@@ -10,6 +10,18 @@
     this.pages = [];
   });
 
+  Content.prototype.scrollHeight = function() {
+    var value = 0;
+    for (var i = 0, len = this.pages.length; i < len; i++) {
+      var page = this.pages[i];
+      if (!page.visible()) {
+        break;
+      }
+      value += page.scrollHeight();
+    }
+    return value;
+  };
+
   Content.prototype.loadPage = function(url) {
     var page = new Page();
     page.parentElement(this.element());
