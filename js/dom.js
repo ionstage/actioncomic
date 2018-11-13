@@ -57,6 +57,10 @@
     return window.pageYOffset;
   };
 
+  dom.innerHeight = function() {
+    return window.innerHeight;
+  };
+
   dom.contentWindow = function(iframe) {
     return iframe.contentWindow;
   };
