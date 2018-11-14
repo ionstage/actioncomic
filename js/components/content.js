@@ -11,7 +11,7 @@
   });
 
   Content.prototype.scrollHeight = function() {
-    var value = 0;
+    var value = dom.innerHeight();
     for (var i = 0, len = this.pages.length; i < len; i++) {
       var page = this.pages[i];
       if (!page.visible()) {
