@@ -22,6 +22,7 @@
       dom.attr(this.element(), { src: url });
     }.bind(this)).then(function(module) {
       this.module = module;
+      this.visible(true);
     }.bind(this));
   };
 
