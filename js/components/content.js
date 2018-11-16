@@ -26,7 +26,9 @@
     var page = new Page();
     page.parentElement(this.element());
     this.pages.push(page);
-    return page.load(url);
+    return page.load(url).then(function() {
+      this.emit('load');
+    }.bind(this));
   };
 
   Content.prototype.onredraw = function() {

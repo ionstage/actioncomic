@@ -10,10 +10,18 @@
     this.content = new Content({ element: this.findElement('.content') });
   });
 
+  Main.prototype.oninit = function() {
+    this.content.on('load', this.onload.bind(this));
+  };
+
   Main.prototype.onredraw = function() {
     this.redrawBy('height', function(height) {
       dom.css(this.element(), { height: height + 'px' });
     });
+  };
+
+  Main.prototype.onload = function() {
+    this.height(this.content.scrollHeight());
   };
 
   if (typeof module !== 'undefined' && module.exports) {
