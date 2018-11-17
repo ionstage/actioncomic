@@ -11,6 +11,7 @@
   });
 
   Main.prototype.oninit = function() {
+    dom.onresize(this.onresize.bind(this));
     this.content.on('load', this.onload.bind(this));
   };
 
@@ -18,6 +19,10 @@
     this.redrawBy('height', function(height) {
       dom.css(this.element(), { height: height + 'px' });
     });
+  };
+
+  Main.prototype.onresize = function() {
+    this.height(this.content.scrollHeight());
   };
 
   Main.prototype.onload = function() {

@@ -81,6 +81,10 @@
     dom.on(el, type, wrapper, useCapture);
   };
 
+  dom.onresize = function(listener, useCapture) {
+    dom.on(window, 'resize', listener, useCapture);
+  };
+
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = dom;
   } else {
