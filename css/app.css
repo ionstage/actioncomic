@@ -15,5 +15,11 @@
   height: 100vh;
   pointer-events: none;
   position: fixed;
+  -webkit-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
   width: 100%;
+}
+
+.content.hide {
+  opacity: 0;
 }
