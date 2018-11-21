@@ -11,13 +11,19 @@
   });
 
   Main.prototype.oninit = function() {
-    this.content.load('content/index.html');
+    this.content.load('content/index.html').then(function() {
+      dom.onscroll(this.onscroll.bind(this));
+    }.bind(this));
   };
 
   Main.prototype.onredraw = function() {
     this.redrawBy('height', function(height) {
       dom.css(this.element(), { height: height + 'px' });
     });
+  };
+
+  Main.prototype.onscroll = function() {
+    this.content.scrollTo(dom.scrollX(), dom.scrollY());
   };
 
   if (typeof module !== 'undefined' && module.exports) {

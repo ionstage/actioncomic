@@ -21,6 +21,12 @@
     }.bind(this));
   };
 
+  Content.prototype.scrollTo = function(x, y) {
+    if (this.module) {
+      this.module.onscroll(x, y);
+    }
+  };
+
   Content.prototype.onredraw = function() {
     this.redrawBy('visible', function(visible) {
       dom.toggleClass(this.element(), 'hide', !visible);

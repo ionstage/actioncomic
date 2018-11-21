@@ -53,6 +53,10 @@
     return el.scrollHeight;
   };
 
+  dom.scrollX = function() {
+    return window.pageXOffset;
+  };
+
   dom.scrollY = function() {
     return window.pageYOffset;
   };
@@ -83,6 +87,10 @@
 
   dom.onresize = function(listener, useCapture) {
     dom.on(window, 'resize', listener, useCapture);
+  };
+
+  dom.onscroll = function(listener, useCapture) {
+    dom.on(window, 'scroll', listener, useCapture);
   };
 
   if (typeof module !== 'undefined' && module.exports) {
