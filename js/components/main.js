@@ -10,6 +10,10 @@
     this.content = new Content({ element: this.findElement('.content') });
   });
 
+  Main.prototype.oninit = function() {
+    this.content.load('content/index.html');
+  };
+
   Main.prototype.onredraw = function() {
     this.redrawBy('height', function(height) {
       dom.css(this.element(), { height: height + 'px' });
