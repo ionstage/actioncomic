@@ -61,6 +61,10 @@
     return window.pageYOffset;
   };
 
+  dom.innerWidth = function() {
+    return window.innerWidth;
+  };
+
   dom.innerHeight = function() {
     return window.innerHeight;
   };
