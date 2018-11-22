@@ -17,6 +17,7 @@
       dom.attr(this.element(), { src: url });
     }.bind(this)).then(function(module) {
       this.module = module;
+      module.onload();
       this.visible(true);
     }.bind(this));
   };
