@@ -17,6 +17,7 @@
       dom.attr(this.element(), { src: url });
     }.bind(this)).then(function(module) {
       this.module = module;
+      module.resize = this.onresize.bind(this);
       module.onload();
       this.visible(true);
     }.bind(this));
@@ -32,6 +33,10 @@
     this.redrawBy('visible', function(visible) {
       dom.toggleClass(this.element(), 'hide', !visible);
     });
+  };
+
+  Content.prototype.onresize = function(width, height) {
+    this.emit('resize', width, height);
   };
 
   if (typeof module !== 'undefined' && module.exports) {
