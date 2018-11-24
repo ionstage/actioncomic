@@ -5,6 +5,8 @@
   var dom = app.dom || require('../dom.js');
 
   var Content = jCore.Component.inherits(function() {
+    this.width = this.prop(0);
+    this.height = this.prop(0);
     this.visible = this.prop(false);
     this.module = null;
   });
@@ -17,7 +19,7 @@
       dom.attr(this.element(), { src: url });
     }.bind(this)).then(function(module) {
       this.module = module;
-      module.resize = this.onresize.bind(this);
+      module.onresize = this.onresize.bind(this);
       module.onload();
       this.visible(true);
     }.bind(this));
@@ -36,7 +38,9 @@
   };
 
   Content.prototype.onresize = function(width, height) {
-    this.emit('resize', width, height);
+    this.width(width);
+    this.height(height);
+    this.emit('resize');
   };
 
   if (typeof module !== 'undefined' && module.exports) {

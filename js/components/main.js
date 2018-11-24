@@ -6,30 +6,28 @@
   var Content = app.Content || require('./content.js');
 
   var Main = jCore.Component.inherits(function() {
-    this.contentWidth = this.prop(0);
-    this.contentHeight = this.prop(0);
     this.content = new Content({ element: this.findElement('.content') });
   });
 
   Main.prototype.width = function() {
-    return this.contentWidth() + dom.innerWidth();
+    return this.content.width() + dom.innerWidth();
   };
 
   Main.prototype.height = function() {
-    return this.contentHeight() + dom.innerHeight();
+    return this.content.height() + dom.innerHeight();
   };
 
   Main.prototype.overflowX = function() {
-    return (this.contentWidth() ? 'visible' : 'hidden');
+    return (this.content.width() ? 'visible' : 'hidden');
   };
 
   Main.prototype.overflowY = function() {
-    return (this.contentHeight() ? 'visible' : 'hidden');
+    return (this.content.height() ? 'visible' : 'hidden');
   };
 
   Main.prototype.oninit = function() {
     dom.onresize(this.onresize.bind(this));
-    this.content.on('resize', this.oncontentresize.bind(this));
+    this.content.on('resize', this.onresize.bind(this));
     this.content.load('content/index.html').then(function() {
       dom.onscroll(this.onscroll.bind(this));
     }.bind(this));
@@ -55,11 +53,6 @@
 
   Main.prototype.onresize = function() {
     this.markDirty();
-  };
-
-  Main.prototype.oncontentresize = function(width, height) {
-    this.contentWidth(width);
-    this.contentHeight(height);
   };
 
   Main.prototype.onscroll = function() {
