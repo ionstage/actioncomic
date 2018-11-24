@@ -6,6 +6,7 @@
   var Content = app.Content || require('./content.js');
 
   var Main = jCore.Component.inherits(function() {
+    this.width = this.prop(0);
     this.height = this.prop(0);
     this.content = new Content({ element: this.findElement('.content') });
   });
@@ -17,6 +18,10 @@
   };
 
   Main.prototype.onredraw = function() {
+    this.redrawBy('width', function(width) {
+      dom.css(this.element(), { width: width + 'px' });
+    });
+
     this.redrawBy('height', function(height) {
       dom.css(this.element(), { height: height + 'px' });
     });
