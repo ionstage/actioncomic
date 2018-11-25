@@ -2,6 +2,7 @@
   'use strict';
 
   var jCore = require('jcore');
+  var helper = app.helper || require('../helper.js');
   var dom = app.dom || require('../dom.js');
 
   var Content = jCore.Component.inherits(function() {
@@ -25,10 +26,13 @@
     }.bind(this));
   };
 
-  Content.prototype.scrollTo = function(x, y) {
-    if (this.module) {
-      this.module.onscroll(x, y);
+  Content.prototype.scrollTo = function(scrollX, scrollY) {
+    if (!this.module) {
+      return;
     }
+    var x = helper.clamp(scrollX, 0, this.width());
+    var y = helper.clamp(scrollY, 0, this.height());
+    this.module.onscroll(x, y);
   };
 
   Content.prototype.onredraw = function() {
