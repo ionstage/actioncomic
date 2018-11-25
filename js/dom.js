@@ -41,6 +41,10 @@
     });
   };
 
+  dom.translate = function(el, x, y) {
+    dom.transform(el, 'translate(' + x + 'px, ' + y + 'px)');
+  };
+
   dom.translateY = function(el, y) {
     dom.transform(el, 'translateY(' + y + 'px)');
   };

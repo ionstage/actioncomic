@@ -6,6 +6,8 @@
   var dom = app.dom || require('../dom.js');
 
   var Content = jCore.Component.inherits(function() {
+    this.x = this.prop(0);
+    this.y = this.prop(0);
     this.width = this.prop(0);
     this.height = this.prop(0);
     this.visible = this.prop(false);
@@ -32,10 +34,16 @@
     }
     var x = helper.clamp(scrollX, 0, this.width());
     var y = helper.clamp(scrollY, 0, this.height());
-    this.module.onscroll(x, y);
+    this.x(x - scrollX);
+    this.y(y - scrollY);
+    this.module.onscroll(scrollX, scrollY);
   };
 
   Content.prototype.onredraw = function() {
+    this.redrawBy('x', 'y', function(x, y) {
+      dom.translate(this.element(), x, y);
+    });
+
     this.redrawBy('visible', function(visible) {
       dom.toggleClass(this.element(), 'hide', !visible);
     });
