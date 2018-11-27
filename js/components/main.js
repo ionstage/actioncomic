@@ -6,6 +6,7 @@
   var Content = app.Content || require('./content.js');
 
   var Main = jCore.Component.inherits(function() {
+    this.backgroundColor = this.prop('transparent');
     this.content = new Content({ element: this.findElement('.content') });
   });
 
@@ -48,6 +49,10 @@
 
     this.redrawBy('overflowY', function(overflowY) {
       dom.css(this.element(), { overflowY: overflowY });
+    });
+
+    this.redrawBy('backgroundColor', function(backgroundColor) {
+      dom.css(this.element(), { backgroundColor: backgroundColor });
     });
   };
 
