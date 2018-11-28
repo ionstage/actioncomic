@@ -29,6 +29,7 @@
   Main.prototype.oninit = function() {
     dom.onresize(this.onresize.bind(this));
     this.content.on('resize', this.onresize.bind(this));
+    this.content.on('changebackgroundcolor', this.onchangebackgroundcolor.bind(this));
     this.content.load('content/index.html').then(function() {
       dom.onscroll(this.onscroll.bind(this));
     }.bind(this));
@@ -58,6 +59,10 @@
 
   Main.prototype.onresize = function() {
     this.markDirty();
+  };
+
+  Main.prototype.onchangebackgroundcolor = function(color) {
+    this.backgroundColor(color);
   };
 
   Main.prototype.onscroll = function() {

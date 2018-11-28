@@ -23,6 +23,7 @@
     }.bind(this)).then(function(module) {
       this.module = module;
       module.onresize = this.onresize.bind(this);
+      module.onchangebackgroundcolor = this.onchangebackgroundcolor.bind(this);
       module.onload();
       this.visible(true);
     }.bind(this));
@@ -53,6 +54,10 @@
     this.width(width);
     this.height(height);
     this.emit('resize');
+  };
+
+  Content.prototype.onchangebackgroundcolor = function(color) {
+    this.emit('changebackgroundcolor', color);
   };
 
   if (typeof module !== 'undefined' && module.exports) {
