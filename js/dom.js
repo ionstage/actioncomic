@@ -7,12 +7,6 @@
     return document.body;
   };
 
-  dom.render = function(s) {
-    var el = document.createRange().createContextualFragment(s).firstChild;
-    el.parentNode.removeChild(el);
-    return el;
-  };
-
   dom.attr = function(el, props) {
     Object.keys(props).forEach(function(key) {
       el.setAttribute(key, props[key]);
@@ -43,18 +37,6 @@
 
   dom.translate = function(el, x, y) {
     dom.transform(el, 'translate(' + x + 'px, ' + y + 'px)');
-  };
-
-  dom.translateY = function(el, y) {
-    dom.transform(el, 'translateY(' + y + 'px)');
-  };
-
-  dom.offsetHeight = function(el) {
-    return el.offsetHeight;
-  };
-
-  dom.scrollHeight = function(el) {
-    return el.scrollHeight;
   };
 
   dom.scrollX = function() {
