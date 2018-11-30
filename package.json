@@ -1,5 +1,5 @@
 {
-  "name": "actioncomic",
+  "name": "scrollscene",
   "version": "0.0.1",
   "scripts": {
     "bundle": "browserify -r jcore -o js/bundle.js",
