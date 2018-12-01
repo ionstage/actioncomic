@@ -6,10 +6,11 @@
     "build:bundle": "uglifyjs js/bundle.js -o docs/js/bundle.min.js --comments '/^\\!|^@preserve|^@cc_on|\\bMIT\\b|\\bMPL\\b|\\bGPL\\b|\\(c\\)|License|Copyright/' -c -m",
     "build:css": "cat css/*.css | cleancss -o docs/css/app.min.css",
     "build:js": "browserify js/app.js --no-bundle-external | uglifyjs -o docs/js/app.min.js -c -m",
-    "bundle": "browserify -r jcore -o js/bundle.js",
+    "bundle": "browserify -r es6-promise -r jcore -o js/bundle.js",
     "start": "browser-sync start --files='index.html, css/**/*.css, js/**/*.js' --server"
   },
   "dependencies": {
+    "es6-promise": "^4.2.5",
     "jcore": "^0.3.1"
   },
   "devDependencies": {

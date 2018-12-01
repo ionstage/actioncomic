@@ -8,6 +8,11 @@
 <body class="main">
   <iframe class="content hide" scrolling="no"></iframe>
   <script src="js/bundle.js"></script>
+  <script>
+    if (typeof Promise === 'undefined') {
+      require('es6-promise').polyfill();
+    }
+  </script>
   <script src="js/helper.js"></script>
   <script src="js/dom.js"></script>
   <script src="js/components/content.js"></script>
