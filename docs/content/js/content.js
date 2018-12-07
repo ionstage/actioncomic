@@ -3,8 +3,11 @@
     value: Object.create(Object.prototype, {
       load: {
         value: function(props) {
-          this.exports.onload = props.onload;
-          this.exports.onscroll = props.onscroll;
+          ['onload', 'onscroll'].forEach(function(key) {
+            if (props.hasOwnProperty(key)) {
+              this.exports[key] = props[key];
+            }
+          }.bind(this));
         },
       },
       resize: {
